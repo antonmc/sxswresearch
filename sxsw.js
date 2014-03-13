@@ -1,12 +1,16 @@
-/*global google Tabletop*/
+/*global google Tabletop uniq console map*/
 /*jslint browser:true*/
 
 var spreadsheet = 'https://docs.google.com/spreadsheet/pub?key=0AhLgoEUzhCg_dHdVSDJueXJlOEhBTmdaNE9MSldfQkE&output=html';
 
 var count = 1;
 var taskData = new Array();
+var repoData = new Array();
+var paasData = new Array();
 
 var taskVisuals = [];
+var repoVisuals = [];
+var paasVisuals = [];
 
 function buildContent( data ){
 
@@ -101,9 +105,8 @@ function plot(team){
 }
 
 function codeAddress( address ) {
-//	var address = document.getElementById('address').value;
 	
-		var geocoder = new google.maps.Geocoder();
+	var geocoder = new google.maps.Geocoder();
 
 	geocoder.geocode( { 'address': address.location}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
@@ -117,7 +120,6 @@ function codeAddress( address ) {
 			    position: results[0].geometry.location
 			});
 	    } else {
-	      alert('Geocode was not successful for the following reason: ' + status);
 	    }
 	});
 }
@@ -168,72 +170,68 @@ function showInfo(data) {
     data.profiles.elements.forEach( buildOverview );
 }
 
-function isin(n,a){
-  for (var i=0;i<a.length;i++){
-    if (a[i]== n) {
-      var b = true;
-      return b;
-    } else {
-      var c = false;
-      return c;
-   }
-  }
-}
-
-function unique(a){
-  var arr = [];
-  for (var i=0;i<a.length;i++){
-    if (!isin(a[i],arr)){
-      arr.push(a[i]);
-    }
-  }
-
- return arr;
-}
-
-Array.prototype.getUnique = function () {
-	var o = new Object();
-	var i, e;
-	for (i = 0; e = this[i]; i++) {o[e] = 1};
-	var a = new Array();
-	for (e in o) {a.push (e)};
-	return a;
-} 
 
 function taskChart( data ){
 	taskData.push( data.tasks );
 }
 
-function countItems( item ){
+function repoChart( data ){
+	repoData.push( data.repository );
+}
+
+function paasChart( data ){
+	paasData.push( data.repository );
+}
+
+function countTaskItems( item ){
 	
 	var items = 0;
 	
 	if( item !== "" ){
 	
-	for( var i = 0; i < taskData.length; i++ ){
-		
-		if( taskData[i] == item ){
-			items++;
+		for( var i = 0; i < taskData.length; i++ ){
+			
+			if( taskData[i] == item ){
+				items++;
+			}
 		}
+		
+		var entry = [ item, items ];
+		
+		taskVisuals.push( entry );
 	}
+}
+
+function countRepoItems( item ){
 	
-	var entry = [ item, items ];
+	var items = 0;
 	
-	taskVisuals.push( entry );
+	if( item !== "" ){
 	
+		for( var i = 0; i < repoData.length; i++ ){
+			
+			var cleanString = repoData[i].replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
+			
+			if( cleanString === item ){
+				items++;
+			}
+		}
+		
+		var entry = [ item, items ];
+		
+		repoVisuals.push( entry );
 	}
 }
 
 function buildMetrics( data ){
-	data.profiles.elements.forEach( taskChart );
 	
+	data.profiles.elements.forEach( taskChart );
 	taskVisuals.push( [ 'Task Management', 'Occurrances' ] );
 	
 	var items = _.uniq( taskData );
+	items.forEach( countTaskItems );
 	
-	items.forEach( countItems );
-	
-	var data = google.visualization.arrayToDataTable(taskVisuals);
+	var taskVisualData = google.visualization.arrayToDataTable(taskVisuals);
 
     var options = {
       title: 'Task Management Tools',
@@ -241,9 +239,23 @@ function buildMetrics( data ){
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    chart.draw(data, options);
+    chart.draw(taskVisualData, options);
+    
+    data.profiles.elements.forEach( repoChart );
+	repoVisuals.push( [ 'Repository Management', 'Occurrances' ] );
 	
-	console.log( taskVisuals );
+	items = _.uniq( repoData );
+	items.forEach( countRepoItems );
+	
+	var repoVisualData = google.visualization.arrayToDataTable(repoVisuals);
+
+    var options = {
+      title: 'Repositories',
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('repochart'));
+    chart.draw(repoVisualData, options);
 }
 
 function drawCharts(){
