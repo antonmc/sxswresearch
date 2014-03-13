@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="bootstrap.css">
 		<link rel="stylesheet" href="sxsw.css">
 		<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script	src="lib/tabletop.js"></script>
 		<script src="sxsw.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
@@ -39,12 +40,17 @@
                   <th>Repository</th>
                   <th>Language</th>
                   <th>PaaS</th>
+                  <th>Photo</th>
                 </tr>
               </thead>
               <tbody id = "overview">
               </tbody>
             </table>
-			
-		</div>
+            
+            <script type="text/javascript">
+	            google.load( "visualization", "1", { packages:["corechart"] } );
+	    		google.setOnLoadCallback( drawChart );
+   	 		</script>
+	    	 <div id="donutchart" style="width: 900px; height: 500px;"></div>
 	</body>
 </html>

@@ -1,6 +1,10 @@
 /*global google Tabletop*/
 /*jslint browser:true*/
 
+var spreadsheet = 'https://docs.google.com/spreadsheet/pub?key=0AhLgoEUzhCg_dHdVSDJueXJlOEhBTmdaNE9MSldfQkE&output=html';
+
+var count = 1;
+
 function buildContent( data ){
 
 	var twitterLogo = "	https://abs.twimg.com/a/1382598364/images/resources/twitter-bird-blue-on-white.png";
@@ -28,15 +32,18 @@ function buildOverview( data ){
 	
 	var tr = document.createElement( 'tr' );
 	
-	tr.innerHTML = '<td>' + '</td>' + 
+	tr.innerHTML = '<td><strong>' + count + '</strong></td>' + 
 					'<td>' + data.name + '</td>' + 
 					'<td>' + data.company + '</td>' + 
 					'<td>' + data.tasks + '</td>' +
 					'<td>' + data.repository + '</td>' +
 					'<td>' + data.language + '</td>' +
-					'<td>' + data.paas + '</td>';
+					'<td>' + data.paas + '</td>'; 
+				//	'<td><img src=images/' + data.photo + ' alt="Twitter" height="50" width="50"></td>';
 	
 	overview.appendChild( tr );
+	
+	count = count + 1;
 	
 }
 
@@ -158,7 +165,42 @@ function showInfo(data) {
     data.profiles.elements.forEach( buildOverview );
 }
 
+
+
+function buildMetrics( data ){
+	
+	 data.profiles.elements.forEach( photoGrid );
+	
+}
+
+function drawCharts(){
+	
+	Tabletop.init( { key: spreadsheet, callback: buildMetrics } );
+	
+	var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ]);
+
+    var options = {
+      title: 'My Daily Activities',
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);	
+}
+
+ 
+function drawChart() {
+	drawCharts();
+}
+
+
 window.onload = function() {
-    var spreadsheet = 'https://docs.google.com/spreadsheet/pub?key=0AhLgoEUzhCg_dHdVSDJueXJlOEhBTmdaNE9MSldfQkE&output=html';
     Tabletop.init({ key: spreadsheet, callback: showInfo });
 };
