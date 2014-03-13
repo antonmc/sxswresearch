@@ -180,46 +180,47 @@ function repoChart( data ){
 }
 
 function paasChart( data ){
-	paasData.push( data.repository );
+	paasData.push( data.paas );
 }
 
-function countTaskItems( item ){
-	
-	var items = 0;
-	
-	if( item !== "" ){
-	
-		for( var i = 0; i < taskData.length; i++ ){
-			
+function countTaskItems( item ){	
+	var items = 0;	
+	if( item !== "" ){	
+		for( var i = 0; i < taskData.length; i++ ){			
 			if( taskData[i] == item ){
 				items++;
 			}
-		}
-		
-		var entry = [ item, items ];
-		
+		}		
+		var entry = [ item, items ];		
 		taskVisuals.push( entry );
 	}
 }
 
 function countRepoItems( item ){
-	
 	var items = 0;
-	
 	if( item !== "" ){
-	
 		for( var i = 0; i < repoData.length; i++ ){
-			
 			var cleanString = repoData[i].replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
-			
 			if( cleanString === item ){
 				items++;
 			}
 		}
-		
 		var entry = [ item, items ];
-		
 		repoVisuals.push( entry );
+	}
+}
+
+function countPaasItems( item ){
+	var items = 0;
+	if( item !== "" ){
+		for( var i = 0; i < paasData.length; i++ ){
+			var cleanString = paasData[i].replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
+			if( cleanString === item ){
+				items++;
+			}
+		}
+		var entry = [ item, items ];
+		paasVisuals.push( entry );
 	}
 }
 
@@ -256,20 +257,33 @@ function buildMetrics( data ){
 
     var chart = new google.visualization.PieChart(document.getElementById('repochart'));
     chart.draw(repoVisualData, options);
+    
+    /* PaaS */
+    
+    data.profiles.elements.forEach( paasChart );
+	paasVisuals.push( [ 'Platforms', 'Occurrances' ] );
+	
+	items = _.uniq( paasData );
+	items.forEach( countPaasItems );
+	
+	var paasVisualData = google.visualization.arrayToDataTable(paasVisuals);
+
+    var options = {
+      title: 'Platform as a Service',
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('paaschart'));
+    chart.draw(paasVisualData, options);
 }
 
 function drawCharts(){
-	
-	Tabletop.init( { key: spreadsheet, callback: buildMetrics } );
-	
-		
+	Tabletop.init( { key: spreadsheet, callback: buildMetrics } );		
 }
-
  
 function drawChart() {
 	drawCharts();
 }
-
 
 window.onload = function() {
     Tabletop.init({ key: spreadsheet, callback: showInfo });
