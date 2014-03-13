@@ -4,6 +4,9 @@
 var spreadsheet = 'https://docs.google.com/spreadsheet/pub?key=0AhLgoEUzhCg_dHdVSDJueXJlOEhBTmdaNE9MSldfQkE&output=html';
 
 var count = 1;
+var taskData = new Array();
+
+var taskVisuals = [];
 
 function buildContent( data ){
 
@@ -165,18 +168,54 @@ function showInfo(data) {
     data.profiles.elements.forEach( buildOverview );
 }
 
-function taskChart( data ){
-	
-	var taskData = [];
-	
-	taskData.push( data.tasks );
-	
-	console.log( taskData );
+function isin(n,a){
+  for (var i=0;i<a.length;i++){
+    if (a[i]== n) {
+      var b = true;
+      return b;
+    } else {
+      var c = false;
+      return c;
+   }
+  }
 }
 
+function unique(a){
+  var arr = [];
+  for (var i=0;i<a.length;i++){
+    if (!isin(a[i],arr)){
+      arr.push(a[i]);
+    }
+  }
+
+ return arr;
+}
+
+function taskChart( data ){
+	taskData.push( data.tasks );
+}
+
+function countItems( item ){
+	
+	var items = 0;
+	
+	for( var i = 0; i < taskData.length; i++ ){
+		
+		if( taskData[i] === item ){
+			items++;
+		}
+	}
+	
+//	var entry = 
+}
 
 function buildMetrics( data ){
 	data.profiles.elements.forEach( taskChart );
+	var items = unique( taskData );
+	
+	items.forEach( countItems );
+	
+	console.log( items );
 }
 
 function drawCharts(){
