@@ -1,4 +1,4 @@
-/*global google Tabletop uniq console map*/
+/*global google Tabletop uniq console map _*/
 /*jslint browser:true*/
 
 var spreadsheet = 'https://docs.google.com/spreadsheet/pub?key=0AhLgoEUzhCg_dHdVSDJueXJlOEhBTmdaNE9MSldfQkE&output=html';
@@ -7,10 +7,12 @@ var count = 1;
 var taskData = new Array();
 var repoData = new Array();
 var paasData = new Array();
+var languageData = new Array();
 
 var taskVisuals = [];
 var repoVisuals = [];
 var paasVisuals = [];
+var languageVisuals = [];
 
 function buildContent( data ){
 
@@ -183,6 +185,10 @@ function paasChart( data ){
 	paasData.push( data.paas );
 }
 
+function languageChart( data ){
+	languageData.push( data.language );
+}
+
 function countTaskItems( item ){	
 	var items = 0;	
 	if( item !== "" ){	
@@ -207,6 +213,20 @@ function countRepoItems( item ){
 		}
 		var entry = [ item, items ];
 		repoVisuals.push( entry );
+	}
+}
+
+function countLanguageItems( item ){
+	var items = 0;
+	if( item !== "" ){
+		for( var i = 0; i < languageData.length; i++ ){
+			var cleanString = languageData[i].replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
+			if( cleanString === item ){
+				items++;
+			}
+		}
+		var entry = [ item, items ];
+		languageVisuals.push( entry );
 	}
 }
 
@@ -275,6 +295,25 @@ function buildMetrics( data ){
 
     var chart = new google.visualization.PieChart(document.getElementById('paaschart'));
     chart.draw(paasVisualData, options);
+    
+    /* Language */
+   
+   	data.profiles.elements.forEach( languageChart );
+	languageVisuals.push( [ 'Platforms', 'Occurrances' ] );
+	
+	items = _.uniq( languageData );
+	items.forEach( countLanguageItems );
+	
+	var languageVisualData = google.visualization.arrayToDataTable(languageVisuals);
+
+    var options = {
+      title: 'Languages',
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('languagechart'));
+    chart.draw(languageVisualData, options);
+    
 }
 
 function drawCharts(){
