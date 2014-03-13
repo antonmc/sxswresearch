@@ -191,6 +191,15 @@ function unique(a){
  return arr;
 }
 
+Array.prototype.getUnique = function () {
+	var o = new Object();
+	var i, e;
+	for (i = 0; e = this[i]; i++) {o[e] = 1};
+	var a = new Array();
+	for (e in o) {a.push (e)};
+	return a;
+} 
+
 function taskChart( data ){
 	taskData.push( data.tasks );
 }
@@ -203,7 +212,7 @@ function countItems( item ){
 	
 	for( var i = 0; i < taskData.length; i++ ){
 		
-		if( taskData[i] === item ){
+		if( taskData[i] == item ){
 			items++;
 		}
 	}
@@ -220,7 +229,7 @@ function buildMetrics( data ){
 	
 	taskVisuals.push( [ 'Task Management', 'Occurrances' ] );
 	
-	var items = unique( taskData );
+	var items = _.uniq( taskData );
 	
 	items.forEach( countItems );
 	
