@@ -165,12 +165,18 @@ function showInfo(data) {
     data.profiles.elements.forEach( buildOverview );
 }
 
+function taskChart( data ){
+	
+	var taskData = [];
+	
+	taskData.push( data.tasks );
+	
+	console.log( taskData );
+}
 
 
 function buildMetrics( data ){
-	
-	 data.profiles.elements.forEach( photoGrid );
-	
+	data.profiles.elements.forEach( taskChart );
 }
 
 function drawCharts(){
