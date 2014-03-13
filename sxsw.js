@@ -199,6 +199,8 @@ function countItems( item ){
 	
 	var items = 0;
 	
+	if( item !== "" ){
+	
 	for( var i = 0; i < taskData.length; i++ ){
 		
 		if( taskData[i] === item ){
@@ -206,38 +208,40 @@ function countItems( item ){
 		}
 	}
 	
-//	var entry = 
+	var entry = [ item, items ];
+	
+	taskVisuals.push( entry );
+	
+	}
 }
 
 function buildMetrics( data ){
 	data.profiles.elements.forEach( taskChart );
+	
+	taskVisuals.push( [ 'Task Management', 'Occurrances' ] );
+	
 	var items = unique( taskData );
 	
 	items.forEach( countItems );
 	
-	console.log( items );
+	var data = google.visualization.arrayToDataTable(taskVisuals);
+
+    var options = {
+      title: 'Task Management Tools',
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+	
+	console.log( taskVisuals );
 }
 
 function drawCharts(){
 	
 	Tabletop.init( { key: spreadsheet, callback: buildMetrics } );
 	
-	var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
-    ]);
-
-    var options = {
-      title: 'My Daily Activities',
-      pieHole: 0.4,
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    chart.draw(data, options);	
+		
 }
 
  
