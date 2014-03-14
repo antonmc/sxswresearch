@@ -1,5 +1,5 @@
 .title{
-	color: #555;
+	color: #cb2027;
 	font-size: 16px;
 	font-family: sans-serif;
 	font-weight: bold;
@@ -19,7 +19,7 @@
 
 .background{
 	padding-top: 0;
-	background: whitesmoke;
+	background: #d9d9d9;
 }
 
 .mapcontainer{
@@ -37,6 +37,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
+	padding-top:80px;
 }
 
 .sxswmap{
@@ -52,11 +53,12 @@
 	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 
-.thumbnail{
+.thumbnail {
 	display: block;
 	line-height: 30px;
 	border: none;
-	padding:0;
+	padding: 5px;
+	padding-bottom: 0;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
 }
 
@@ -132,4 +134,24 @@ img{
 	position: fixed;
 	top: 0;
 	z-index: 100;
+}
+
+.piechart{
+	width: 355px;
+	height: 355px;
+	display:inline-block;
+	margin:20px;
+}
+
+body > div.appcontainer > table > thead > tr {
+	background: #ddd;
+	color: #666;
+}
+
+#overview > tr {
+	color: #777;
+}
+
+table {
+	border-color: #eee;
 }

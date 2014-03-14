@@ -2,33 +2,30 @@
 	<head>
 		<title>SXSW Developer Profiles</title>
 		<link rel="stylesheet" href="bootstrap.css">
+				<link rel="stylesheet" href="cultura.css">
 		<link rel="stylesheet" href="sxsw.css">
 		<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css">
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script	src="lib/tabletop.js"></script>
 		<script src="underscore.js"></script>
 		<script src="sxsw.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="src/bootstrap.js"></script>
+		<script	src="src/markdown.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 	</head>
 	<body class="background">
 		 <div class="headerBackground"><h3 class="title">Profiles from sxsw</h3></div>
 		 <div class="appcontainer">
 			
-			
-			<h4 class="leadin">Who we talked to ... </h4>
-			
 			<div class="row-fluid">
 	            <ul class="thumbnails" id="thumbnails">
 	            </ul>
 			</div>
-			
-			<h4 class="leadin">Where they lived ... </h4>
 	
 			<div class="mapcontainer">
 				<div id="map_canvas" class="sxswmap"></div>
 			</div>
-				
-			<h4 class="leadin">What they told us ... </h4>	
 				
 			<table class="table sxswtable">
               <thead>
@@ -48,15 +45,28 @@
               </tbody>
             </table>
             
-             <div id="donutchart" style="width: 800px; height: 500px;"></div>
-             <div id="repochart" style="width: 800px; height: 500px;"></div>
-             <div id="paaschart" style="width: 800px; height: 500px;"></div>
-             <div id="languagechart" style="width: 800px; height: 500px;"></div>
+             <div id="donutchart" class="piechart"></div>
+             <div id="repochart" class="piechart"></div>
+             <div id="paaschart" class="piechart"></div>
+             <div id="languagechart" class="piechart"></div>
             
             <script type="text/javascript">
 	            google.load( "visualization", "1", { packages:["corechart"] } );
 	    		google.setOnLoadCallback( drawChart );
    	 		</script>
+   	 		
+	   	 	<div id="beginnerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div id="beginnerModalHeader" class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			    <h3 id="myModalLabel">Modal header</h3>
+			  </div>
+			  <div id="beginnerModalBody" class="modal-body">
+			    <p>info</p>
+			  </div>
+			  <div id="modalFooter" class="modal-footer">
+			  	<button class="btn" data-dismiss="modal" aria-hidden="true">I do not accept</button>
+			  </div>
+			</div>
 	    	
 	</body>
 </html>

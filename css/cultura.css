@@ -1,0 +1,308 @@
+/* ol{
+	list-style: none;
+}
+
+ol.thumb-grid li {
+	float: left;
+	width: 25%;
+	margin: 0 5% 5% 0;
+	}
+ol.thumb-grid li:nth-child(3n) {
+	margin-right: 0;
+	}
+ol.thumb-grid li a img {
+	width: 100%;
+	} */
+	
+body {
+	font-family: arial,sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+	color: #333333;
+}
+	
+h3 {
+	font-size: 16px;
+	margin:0;
+	font-weight: normal
+}
+
+p{
+	color: #666666;
+	margin:20px;
+}
+
+.description{
+	font-size:12pt;
+}
+
+.Beginner{
+	background: #dd6465;
+	color: white;
+	padding-left: 20px;
+	font-weight: normal;
+}
+
+.Intermediate{
+	background: #6a96f5;
+	color: white;
+	padding-left: 20px;
+	font-weight: normal;
+}
+	
+.Advanced{
+	background: #f5be6a;
+	color: white;
+	padding-left: 20px;
+	font-weight: normal;
+}
+
+.Kids{
+	background: #e7aaab;
+	color: white;
+	padding-left: 12px;
+	font-weight: normal;
+}
+	
+.btn{
+	font-size:12px;
+}
+
+.BeginnerBtn {
+	font-size: 14px;
+	background: #dd6465;
+	color: white;
+	border: #dd6465 1px solid;
+	border-radius:2px;
+}
+	
+.IntermediateBtn {
+	font-size: 14px;
+	background: #6a96f5;
+	color: white;
+	border: #6a96f5 1px solid;
+	border-radius:2px;
+}	
+
+.AdvancedBtn {
+	font-size: 14px;
+	background: #f5be6a;
+	color: white;
+	border: #f5be6a 1px solid;
+	border-radius:2px;
+}	
+
+.KidsBtn {
+	font-size: 14px;
+	margin-top: 10px;
+	background: #fcf7f7;
+	color: #e7aaab;
+	border: #e7aaab 1px dotted;
+	border-radius:2px;
+}	
+
+	
+.storefront{
+	width: 800px;
+	padding: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+.titleArea{
+	padding:10px;
+	border: 1px dashed aliceblue;
+	background: whitesmoke;
+	border-radius: 3px;
+	font-family:sans-serif;
+	font-size:0.8em;
+	font-weight:bold;
+}
+
+.thumbnail {
+	display: block;
+	padding:0;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.thumbnail .caption {
+	padding:0;
+	color: #555555;
+}
+
+.caption{
+	/* display:inline-block; */
+}
+
+.instituto{
+	background: url(../../img/instituto.png) no-repeat top left; width: 60px; height: 66px;
+	margin:10px;
+	float: left;
+	margin-top: 30px;
+}
+
+.culturaLogo{
+	background: url(img/cultura.png) no-repeat top left; width: 300px; height: 103px;
+	margin:10px;
+	margin-left:-20px;
+	float:left;
+}
+
+.banner{
+	padding-bottom:20px;
+	display:inline-block;
+}
+
+h1, h2, h3 {
+	line-height: 60px;
+}
+
+.title {
+	float: left;
+	margin: 20px;
+	margin-top: 45px;
+	margin-right: -20px;
+	font-size: 23px;
+	color: #f5be6a;
+	border: 1px dashed #f5be6a;
+	padding: 14px;
+	border-radius: 5px;
+	width: 470px;
+	text-align: center;
+}
+
+.paypal-button {
+	white-space: nowrap;
+	display: inline;
+}
+
+.paypal-button button.large {
+	padding: 4px 19px;
+	font-size: 14px;
+}
+
+.paypal-button button {
+	
+	display: inline-block !important;
+	padding: 4px 12px !important;
+	margin-bottom: 0 !important;
+	font-size: 12px !important;
+	line-height: 20px !important;
+	color: #333333 !important;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: #f5f5f5 !important;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6) !important;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6)) !important;
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6) !important;
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6) !important;
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6) !important;
+	background-repeat: repeat-x !important;
+	border: 1px solid #bbbbbb !important;
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf !important;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+	border-bottom-color: #a2a2a2 !important;
+	-webkit-border-radius: 4px !important;
+	-moz-border-radius: 4px !important;
+	border-radius: 4px !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+	border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25) !important;
+	z-index: initial !important;
+	background: none !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	
+}
+
+
+.paypal-button button:hover {
+	color: #333333;
+	text-decoration: none;
+	background-position: 0 -15px;
+	-webkit-transition: background-position 0.1s linear;
+	-moz-transition: background-position 0.1s linear;
+	-o-transition: background-position 0.1s linear;
+	transition: background-position 0.1s linear;
+	background-color: #e6e6e6;
+}
+
+.tellMeMore{
+	padding: 20px;
+	padding-top: 0;
+	color: #666;
+	font-size: 11pt;
+}
+
+#beginnerModalBody > h2 {
+	color: #555;
+	font-size: 12pt;
+	padding-left: 20px;
+	line-height: normal;
+	font-weight: bold;
+}
+
+#intermediateModalBody > h2 {
+	color: #555;
+	font-size: 12pt;
+	padding-left: 20px;
+	line-height: normal;
+	font-weight: bold;
+}
+
+#advancedModalBody > h2 {
+	color: #555;
+	font-size: 12pt;
+	padding-left: 20px;
+	line-height: normal;
+	font-weight: bold;
+}
+
+.msrp{
+	text-decoration:line-through;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.cost{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.entry {
+    margin-top: 10px;
+    float: right;
+    background: white;
+    margin-right: 10px;
+    color: #f5be6a;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.entry-p{
+	margin:6px;
+}
+
+
+.centre{
+	text-align:center;
+}
+

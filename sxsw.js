@@ -56,6 +56,10 @@ function buildOverview( data ){
 	
 }
 
+function trigger(){
+//	$('#beginnerModal').modal('show');
+}
+
 function photoGrid( data ){
 	
 	
@@ -64,10 +68,10 @@ function photoGrid( data ){
 	var li = document.createElement( 'li' );
 	li.className = 'span3';
 	
-	li.innerHTML = '<a href="#" class="thumbnail">' + 
+	li.innerHTML = '<a onclick="trigger()" class="thumbnail">' + 
 						'<img alt="260x180" style="width: 260px; height: 180px;" src="images/' + data.photo +'">' +
 						'<span class="person">' + data.name + '</span>'
-					'</a>';
+				   '</a>';
 	
 	thumbs.appendChild( li );
 }
@@ -87,10 +91,10 @@ function plot(team){
 			icon: {
 				path: google.maps.SymbolPath.CIRCLE,
 				fillOpacity: 0.7,
-				fillColor: 'red',
+				fillColor: '#cb2027',
 				strokeOpacity: 0.9,
-				strokeColor: 'red',
-				strokeWeight: 3,
+				strokeColor: '#cb2027',
+				strokeWeight: 1,
 				scale: 5
 			},
 			title: team.team,
@@ -152,8 +156,8 @@ function showInfo(data) {
 
     var mapOptions = {
 		mapTypeControlOptions: { mapTypeIds: [ 'Styled'] },
-		center: new google.maps.LatLng( 51.5167, 9.9167 ),
-		zoom: 2,
+		center: new google.maps.LatLng( 41.5167, -60.9167 ),
+		zoom: 3,
 		mapTypeId: 'Styled'
 	};
 
