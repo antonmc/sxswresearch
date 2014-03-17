@@ -25,11 +25,10 @@ function buildContent( data ){
 								'<tr>' + 
 									'<th>Company</th>' + 
 									'<td><a href="' + data.website + '"</a>' + data.company + '</td>' +
-									'<td align="center"><a href="https://twitter.com/' + data.twitter + '"</a><img src=images/' + data.photo + ' alt="Twitter" height="50" width="50"></td>' + 
+									'<td align="center"><a href="https://twitter.com/' + data.twitter + '"</a><img class="mapPic" src=images/' + data.photo + ' alt="Twitter"></td>' + 
 								'</tr>' +
 								'<tr><th>Name</th><td colspan="2">' + data.name + '</td></tr>' +
 								'<tr><th>Product</th><td colspan="2">' + data.product + '</td></tr>' +
-								'<tr><th>Address</th><td colspan="2">' + data.address + '</td></tr>' +
 							'</tbody>' +
 						'<table>';
 	
@@ -49,17 +48,12 @@ function buildOverview( data ){
 					'<td>' + data.tasks + '</td>' +
 					'<td>' + data.repository + '</td>' +
 					'<td>' + data.language + '</td>' +
-					'<td>' + data.paas + '</td>'; 
-				//	'<td><img src=images/' + data.photo + ' alt="Twitter" height="50" width="50"></td>';
+					'<td>' + data.paas + '</td>' +
+					'<td><img class="imgTable" src=images/' + data.photo + '></td>';
 	
 	overview.appendChild( tr );
 	
 	count = count + 1;
-	
-}
-
-function findProfile( profile ){
-	
 	
 }
 
@@ -81,7 +75,7 @@ function trigger( event ){
 			
 			var label = document.getElementById( 'myModalLabel' );
 			
-			label.innerText = event.innerText;
+			label.innerText = event.innerText + " - " + p.company;
 			
 			var converter = new Showdown.converter();	
 	
@@ -89,8 +83,11 @@ function trigger( event ){
 			
 			var notes = converter.makeHtml( details );	
 			
-			var info = makeHTML( 'Name', p.name ) +
-						makeHTML( 'Company', p.company ) +
+			var info = /* makeHTML( 'Name', p.name ) +
+						makeHTML( 'Company', p.company ) + */
+						
+						'<img alt="150x150" style="width: 150px; height: 150px; margin-left:20px;" src="images/' + p.photo + '">' +
+						
 						makeHTML( 'Location', p.location ) +
 						makeHTML( 'Product', p.product ) +
 						makeHTML( 'Task Management', p.tasks ) + 
