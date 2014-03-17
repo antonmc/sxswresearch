@@ -14,6 +14,8 @@ var repoVisuals = [];
 var paasVisuals = [];
 var languageVisuals = [];
 
+var profiles;
+
 function buildContent( data ){
 
 	var twitterLogo = "	https://abs.twimg.com/a/1382598364/images/resources/twitter-bird-blue-on-white.png";
@@ -56,8 +58,41 @@ function buildOverview( data ){
 	
 }
 
-function trigger(){
-//	$('#beginnerModal').modal('show');
+function findProfile( profile ){
+	
+	
+}
+
+function trigger( event ){
+	console.log( 'INNER TEXT: ' + event.innerText );
+	
+	
+	for( var i = 0; i < event.profiles.length; i++ ){
+		console.log( 'PROFILE NAME: ' + event.profiles[i].name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") );
+		
+		if( event.profiles[i].name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") == event.innerText ){
+			
+			var label = document.getElementById( 'myModalLabel' );
+			
+			label.innerText = event.innerText;
+			
+			var converter = new Showdown.converter();	
+	
+			var details = event.profiles[i].notes;
+			
+			var notes = converter.makeHtml( details );	
+			
+			var modalNotes = document.getElementById( 'modalBody' );
+			
+			modalNotes.innerHTML = notes;
+					
+			$('#myModal').modal('show');
+			
+			break;
+		}
+	}
+	
+	
 }
 
 function photoGrid( data ){
@@ -68,10 +103,14 @@ function photoGrid( data ){
 	var li = document.createElement( 'li' );
 	li.className = 'span3';
 	
-	li.innerHTML = '<a onclick="trigger()" class="thumbnail">' + 
+	li.id = data.name;
+	
+	li.innerHTML = '<a onclick="trigger(this)" class="thumbnail">' + 
 						'<img alt="260x180" style="width: 260px; height: 180px;" src="images/' + data.photo +'">' +
 						'<span class="person">' + data.name + '</span>'
 				   '</a>';
+				   
+	li.firstChild.profiles = profiles;			   
 	
 	thumbs.appendChild( li );
 }
@@ -136,6 +175,8 @@ function codeAddress( address ) {
  * @param {Object} data The spreadsheet data object from tabletop.
  */
 function showInfo(data) {
+	
+	profiles = data.profiles.elements;
 	
 	var water = "#228db2";
 	var landscape = "#a4bfd1";
