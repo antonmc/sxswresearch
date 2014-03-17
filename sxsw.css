@@ -1,6 +1,6 @@
 .title{
 	color: #cb2027;
-	font-size: 16px;
+	font-size: 18px;
 	font-family: sans-serif;
 	font-weight: bold;
 	padding:5px;
@@ -11,6 +11,7 @@
 	margin-top: 16px;
 	position: absolute;
 	top: -7px;
+	font-family: 'Averia Sans Libre', sans-serif;
 }
 
 .test{
@@ -114,9 +115,10 @@
 }
 
 .person{
-	font-size: 11px;
+	font-size: 12px;
 	padding: 10px;
 	color: #555;
+	font-family: 'Averia Sans Libre', sans-serif;
 	font-weight: bold;
 }
 
@@ -200,6 +202,8 @@ table {
 	max-height: 400px;
 	overflow: auto;
 }
+
+
 
 .section{
 	padding: 20px;
