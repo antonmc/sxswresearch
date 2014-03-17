@@ -159,3 +159,10 @@ table {
 #modalBody > h2 {
 	font-size: 16px;
 }
+
+.modal-body {
+	position: relative;
+	padding: 20px;
+	max-height: 400px;
+	overflow: auto;
+}

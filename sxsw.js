@@ -63,14 +63,21 @@ function findProfile( profile ){
 	
 }
 
+function makeHTML( title, content ){
+	var output = '<h2>' + title + '</h2>' +
+				 '<p>' + content + '</p>'
+	return output;
+}
+
 function trigger( event ){
 	console.log( 'INNER TEXT: ' + event.innerText );
 	
 	
 	for( var i = 0; i < event.profiles.length; i++ ){
-		console.log( 'PROFILE NAME: ' + event.profiles[i].name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") );
+
+		var p = event.profiles[i];
 		
-		if( event.profiles[i].name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") == event.innerText ){
+		if( p.name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") == event.innerText ){
 			
 			var label = document.getElementById( 'myModalLabel' );
 			
@@ -78,13 +85,22 @@ function trigger( event ){
 			
 			var converter = new Showdown.converter();	
 	
-			var details = event.profiles[i].notes;
+			var details = p.notes;
 			
 			var notes = converter.makeHtml( details );	
 			
+			var info = makeHTML( 'Name', p.name ) +
+						makeHTML( 'Company', p.company ) +
+						makeHTML( 'Location', p.location ) +
+						makeHTML( 'Product', p.product ) +
+						makeHTML( 'Task Management', p.tasks ) + 
+						makeHTML( 'PaaS', p.paas ) +
+						makeHTML( 'Tools', p.tools ) +
+						makeHTML( 'Language', p.language );
+			
 			var modalNotes = document.getElementById( 'modalBody' );
 			
-			modalNotes.innerHTML = notes;
+			modalNotes.innerHTML =  info + '<h2>Notes ...</h2>' + notes;
 					
 			$('#myModal').modal('show');
 			
