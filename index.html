@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="bootstrap.css">
 		<link rel="stylesheet" href="sxsw.css">
 		<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css">
+		<link href='http://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script	src="lib/tabletop.js"></script>
 		<script src="underscore.js"></script>
@@ -17,14 +18,20 @@
 		 <div class="headerBackground"><h3 class="title">Profiles from sxsw</h3></div>
 		 <div class="appcontainer">
 			
+			<div class="section">Section1: The people we interviewed - click on their picture to learn about them</div>
+			
 			<div class="row-fluid">
 	            <ul class="thumbnails" id="thumbnails">
 	            </ul>
 			</div>
 	
+			<div class="section">Section 2: Where they came from - click on a pin to see the person</div>
+	
 			<div class="mapcontainer">
 				<div id="map_canvas" class="sxswmap"></div>
 			</div>
+			
+			<div class="section" style="margin-top: 40px;margin-bottom:0;">Section 3: What they told us</div>
 				
 			<table class="table sxswtable">
               <thead>
@@ -43,6 +50,8 @@
               <tbody id = "overview">
               </tbody>
             </table>
+            
+            <div class="section" style="margin-bottom: 0;">Section 4: Patterns they revealed - hover over sections to learn more</div>
             
              <div id="donutchart" class="piechart"></div>
              <div id="repochart" class="piechart"></div>

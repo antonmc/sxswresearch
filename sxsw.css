@@ -7,7 +7,7 @@
 	width: 900px;
 	border-radius: 3px;
 	left: 50%;
-	margin-left: -52px;
+	margin-left: -82px;
 	margin-top: 16px;
 	position: absolute;
 	top: -7px;
@@ -19,7 +19,7 @@
 
 .background{
 	padding-top: 0;
-	background: #d9d9d9;
+	background: #d7e7e7;
 }
 
 .mapcontainer{
@@ -29,7 +29,7 @@
 	min-width: 120px;
 	background: #ffffff;
 	padding: 20px;
-	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+/*	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4); */
 }
 
 .appcontainer{
@@ -47,10 +47,10 @@
 
 .sxswtable{
 	background: white;
-	margin-top: 20px;
+	margin-top: 40px;
 	border-radius: 5px;
 	font-size: 12px;
-	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+	/* box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4); */
 }
 
 .thumbnail {
@@ -59,7 +59,7 @@
 	border: none;
 	padding: 5px;
 	padding-bottom: 0;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+	/* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18); */
 }
 
 .thumbnails{
@@ -154,8 +154,8 @@ img{
 }
 
 body > div.appcontainer > table > thead > tr {
-	background: #ddd;
-	color: #666;
+	background: #eee;
+	color: #cb2027;
 }
 
 #overview > tr {
@@ -199,4 +199,14 @@ table {
 	padding: 20px;
 	max-height: 400px;
 	overflow: auto;
+}
+
+.section{
+	padding: 20px;
+	background: white;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	color: #555;
+	font-weight: bold;
+	font-family: 'Averia Sans Libre', sans-serif;
 }
