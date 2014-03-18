@@ -64,18 +64,18 @@ function makeHTML( title, content ){
 }
 
 function trigger( event ){
-	console.log( 'INNER TEXT: ' + event.innerText );
+	console.log( 'INNER TEXT: ' + event.textContent );
 	
 	
 	for( var i = 0; i < event.profiles.length; i++ ){
 
 		var p = event.profiles[i];
 		
-		if( p.name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") == event.innerText ){
+		if( p.name.replace(/[\|&;\$%@"<>\(\)\+,]/g, "") == event.textContent ){
 			
 			var label = document.getElementById( 'myModalLabel' );
 			
-			label.innerText = event.innerText + " - " + p.company;
+			label.textContent = event.textContent + " - " + p.company;
 			
 			var converter = new Showdown.converter();	
 	
