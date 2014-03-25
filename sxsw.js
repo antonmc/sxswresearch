@@ -94,6 +94,19 @@ function trigger( event ){
 						makeHTML( 'PaaS', p.paas ) +
 						makeHTML( 'Tools', p.tools ) +
 						makeHTML( 'Language', p.language );
+						
+			if( p.video !== "" ){			
+			
+				info = info + '<h2>Video</h2>' +
+					 			'<p><iframe src="' + p.video + '" width="320" height="183"></iframe></p>';
+			}
+			
+						
+			if( p.audio !== "" ){		
+			
+				info = info + '<h2>Audio</h2>' +
+					 			'<p><embed height="50" width="100" src="audio/' + p.audio + '"></p>';
+			}
 			
 			var modalNotes = document.getElementById( 'modalBody' );
 			
